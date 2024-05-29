@@ -1,5 +1,8 @@
 /* Variables */
 $text-color: #444;
+$alternative-text-color: white;
+$primary-blue: #00a9ff;
+$primary-blue-hover: #0191da;
 
 /* Global */
 * {
@@ -22,17 +25,22 @@ ul {
   text-decoration: none;
   border: 1px solid $text-color;
   padding: 10px;
-  color: #e2e2e2;
+  color: $alternative-text-color;
   color: 20px;
   border-radius: 4px;
   font-size: 18px;
-  background-color: #0530be;
+  background-color: $primary-blue;
   transition: background 300ms ease;
+  border-color: transparent;
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
 }
 
 .btn_submit:hover {
-  color: #e2e2e2;
-  background-color: #05258b;
+  color: $alternative-text-color;
+  background-color: $primary-blue-hover;
 }
 
 .btn_outlined {
@@ -45,52 +53,26 @@ ul {
   font-size: 18px;
   background-color: transparent;
   transition: background 300ms ease;
+  border-color: transparent;
+  color: black;
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
 }
 
 .btn_outlined:hover {
-  color: $text-color;
-  background-color: #e2e2e2;
+  color: black;
+  background-color: #c5c5c579;
 }
 
 /* NavBar */
 
 header {
   z-index: 999;
-  max-width: 1400px;
+  max-width: 1800px;
   padding: 16px;
   margin: auto;
   height: 65px;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 16px;
-  align-items: center;
-  height: 65px;
-}
-
-.nav_logo a {
-  text-decoration: none;
-  font-weight: 600;
-  color: #2c2c2c;
-  font-size: 22px;
-}
-
-.nav_links {
-  display: flex;
-  list-style: none;
-  text-decoration: none;
-  gap: 30px;
-}
-
-.nav_links .link {
-  text-decoration: none;
-  color: $text-color;
-}
-
-.nav_separator {
-  color: $text-color;
 }
 
 .burger {
@@ -107,14 +89,6 @@ header {
 }
 
 @media (max-width: 650px) {
-  .nav_links {
-    display: none;
-  }
-
-  .nav_separator {
-    display: none;
-  }
-
   .burger {
     display: block;
   }
@@ -126,12 +100,17 @@ header {
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr 400px;
-  min-height: calc(100vh - 400px);
+  min-height: calc(100vh - 65px);
   align-items: center;
   gap: 50px;
-  padding: 70px 16px;
-  max-width: 1400px;
+  padding: 70px 40px;
+  max-width: 1800px;
   margin: auto;
+
+  @media (max-width: 450px) {
+    padding: 70px 20px;
+    text-align: center;
+  }
 }
 
 .front_page_text {
@@ -153,6 +132,10 @@ header {
 .buttons_container {
   display: flex;
   gap: 10px;
+
+  @media (max-width: 450px) {
+    margin: auto;
+  }
 }
 
 .buttons_container button a {
@@ -263,28 +246,20 @@ header {
 /* Catalogo */
 
 .catalogo_section {
-  min-height: calc(100vh - 400px);
-  max-width: 1400px;
+  min-height: calc(100vh - 65px);
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   padding: 70px 16px;
   align-items: center;
+
+  @media (max-width: 450px) {
+    padding: 70px 20px;
+    text-align: center;
+  }
 }
 
-.movies_grid {
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-  text-align: center;
-}
-
-.movies_grid li h5 {
-  color: $text-color;
-  font-size: 20px;
-}
-
-.movies_grid li img {
+.movie_image {
   width: 300px;
   max-width: 100%;
 }
@@ -292,8 +267,8 @@ header {
 /* About */
 
 .about_section {
-  min-height: calc(100vh - 400px);
-  max-width: 1400px;
+  min-height: calc(100vh - 65px);
+  max-width: 1800px;
   margin: auto;
   padding-top: 70px;
   align-items: center;
@@ -304,30 +279,54 @@ header {
 
   h1 {
     font-size: 36px;
+    margin-bottom: 40px;
   }
 
-  h2 {
-    font-size: 28px;
-    font-weight: 400;
-    margin: 20px 0;
-  }
-
-  div {
+  article {
     display: grid;
-    gap: 40px;
-    margin-top: 40px;
+    gap: 60px;
+    align-items: center;
 
-    img {
-      width: 300px;
-      max-width: 100%;
-      height: auto;
-      border-radius: 50%;
-      margin: auto;
-    }
+    div {
+      display: grid;
+      gap: 40px;
 
-    h5 {
-      font-size: 20px;
-      color: $text-color;
+      h2 {
+        font-size: 34px;
+        font-weight: 600;
+        margin: 20px 0;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      img {
+        width: 300px;
+        max-width: 100%;
+        height: auto;
+        border-radius: 50%;
+        margin: auto;
+      }
+
+      h5 {
+        font-size: 18px;
+        color: $text-color;
+      }
+
+      @media (max-width: 500px) {
+        h5 {
+          font-size: 16px;
+        }
+
+        h2 {
+          font-size: 24px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
     }
   }
 
@@ -345,9 +344,9 @@ header {
 /* Contact */
 
 .contact_section {
-  min-height: calc(100vh - 400px);
+  min-height: calc(100vh - 65px);
   padding: 70px 16px;
-  max-width: 1400px;
+  max-width: 1800px;
   margin: auto;
   align-items: center;
   display: flex;
@@ -383,7 +382,7 @@ header {
 
   input {
     width: 90%;
-    height: 40px;
+    height: 50px;
     color: $text-color;
     border: 1px solid #bcbcbc;
     border-radius: 4px;
@@ -397,14 +396,16 @@ header {
     height: 130px;
     color: $text-color;
     border: 1px solid #bcbcbc;
-    border-radius: 10px;
+    border-radius: 4px;
     outline: none;
     margin-bottom: 20px;
     padding: 15px;
     resize: none;
+    color: $text-color;
 
     &::placeholder {
       color: $text-color;
+      opacity: 0.7;
     }
   }
 }
@@ -412,9 +413,9 @@ header {
 /* Movie Detail */
 
 .movie_details_section {
-  min-height: calc(100vh - 400px);
+  min-height: calc(100vh - 65px);
   padding: 16px;
-  max-width: 1400px;
+  max-width: 1800px;
   margin: auto;
   display: flex;
   gap: 40px;
@@ -431,17 +432,6 @@ header {
     display: grid;
     gap: 10px;
 
-    h3 {
-      color: $text-color;
-      font-size: 18px;
-
-      span {
-        color: #000;
-        font-weight: 600;
-        font-size: 20px;
-      }
-    }
-
     p {
       color: $text-color;
       font-size: 18px;
@@ -449,6 +439,7 @@ header {
       span {
         color: #000;
         font-weight: 600;
+        font-size: 16px;
       }
     }
   }
@@ -466,7 +457,7 @@ header {
     }
   }
 
-  @media (max-width: 750px) {
+  @media (max-width: 1100px) {
     display: grid;
     place-content: center;
     text-align: center;
